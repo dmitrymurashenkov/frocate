@@ -1,0 +1,5 @@
+export JETTY_HOME=/opt/frocate
+export JETTY_USER=frocate
+export JETTY_LOGS=/var/log/frocate
+export JETTY_STATE=/var/log/frocate/jetty.state
+export JAVA_OPTIONS="-Dlog4j.configurationFile=/opt/frocate/resources/log4j2.xml -Dcom.frocate.RESULT_DIR=/var/opt/frocate/result"

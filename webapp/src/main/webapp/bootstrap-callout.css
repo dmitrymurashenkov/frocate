@@ -1,0 +1,15 @@
+/*
+   Callout styles are used in bootstrap documentation, but are absent in bootstrap itself
+*/
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout-blue {
+    border-left-color: #00aced;
+    background-color: #fcfcff;
+}

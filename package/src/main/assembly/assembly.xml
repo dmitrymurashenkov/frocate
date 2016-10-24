@@ -1,0 +1,47 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+    <id>bin</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <dependencySets>
+        <dependencySet>
+            <includes>
+                <include>com.frocate.web:webapp</include>
+            </includes>
+            <outputDirectory>/opt/frocate/webapps/root</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <useProjectArtifact>false</useProjectArtifact>
+            <unpack>true</unpack>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>org.apache.logging.log4j:*</include>
+                <include>org.slf4j:*</include>
+            </includes>
+            <!-- jetty autoloads jars only from lib/ext -->
+            <outputDirectory>opt/frocate/lib/ext</outputDirectory>
+            <useTransitiveDependencies>true</useTransitiveDependencies>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+    </dependencySets>
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.directory}/dependency/jetty-distribution-${jetty.version}</directory>
+            <outputDirectory>opt/frocate/</outputDirectory>
+            <excludes>
+                <!-- excluding files we don't need or would overwrite with our own versions -->
+                <exclude>logs/</exclude>
+                <exclude>resources/log4j.properties</exclude>
+                <exclude>etc/jetty-logging.xml</exclude>
+                <exclude>bin/jetty.sh</exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/package</directory>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>

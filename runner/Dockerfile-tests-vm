@@ -1,0 +1,17 @@
+FROM frocate-executable-vm:1
+ARG DOCKER_GID
+USER root
+
+RUN apt-get update
+
+#Install docker to allow controling VMs from one of VMs itself (may be used in scalability tests)
+RUN apt-get install -y docker.io
+
+#Allow running "docker" tool without sudo
+RUN usermod -aG docker test
+
+#Gid of "docker" group in VM must match one on the host
+RUN groupmod -g $DOCKER_GID docker
+
+USER test
+WORKDIR /home/test

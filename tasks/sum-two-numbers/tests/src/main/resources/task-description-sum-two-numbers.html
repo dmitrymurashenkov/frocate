@@ -1,0 +1,135 @@
+<p><h1>Tutorial task - sum two numbers</h1>
+
+
+<h3 class="heading-h3-blue" id="description">Description</h3>
+
+<p>
+    This tutorial task will teach you basics of solving Frocate tasks. We will build simple HTTP
+    service that accepts requests with two numbers and returns their sum in response.
+</p>
+
+<div style="text-align: center">
+    <img src="resources/task-sum-two-numbers-pic1.png" />
+</div>
+
+<h3
+        class="heading-h3-blue"
+        id="service"
+        onclick="$('#service-content').toggle(200)">
+    Service API <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 20px" aria-hidden="true"></span>
+</h3>
+<div id="service-content">
+    The task is to provide HTTP API:<br><br>
+
+    <div class="well">
+        Request:<br>
+        GET /sum?a=1&b=2<br><br>
+
+        Example response:<br>
+        200 OK<br>
+        3
+    </div>
+
+    <div class="panel panel-success">
+        <div class="panel-heading"><b>Functional requirements</b></div>
+        <div class="panel-body">
+            <ul>
+                <li>Max number length is 20 bytes</li>
+                <li>If incoming request is malformed (params absent, params are not numbers) - return HTTP code 400</li>
+                <li>If some other error occured - return HTTP code 500</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h3
+        class="heading-h3-blue"
+        id="how-to"
+        onclick="$('#how-to-content').toggle(200)">
+    How to<span class="glyphicon glyphicon-triangle-bottom" style="font-size: 20px" aria-hidden="true"></span>
+</h3>
+
+<div id="how-to-content">
+    <b>This tutorial is not yet in final version, we are going to add some examples</b><br>
+    Alright, so let's right down what we need to do:
+    <ul>
+        <li>
+            First of all we need write the calculation code - one that accepts two numbers and returns it's sum.
+            It should be able to handle very large numbers. Basic math facilities in many languages can only handle
+            numbers up to 8 bytes long, but there is almost always some library that can help us with that.
+        </li>
+        <li>
+            Then we need to test it - don't rely on Frocate tests to get all your errors. Usually it is faster to
+            write some unit tests before you try to submit your solution for the first time.
+        </li>
+        <li>
+            Next we need to write HTTP handling code - we may either do all low-level stuff ourselves - bind server TCP
+            socket, accept request and parse it as string, extracting arguments to sum. Or you can find some library
+            that provides fully-functional HTTP server. The choice is up to you, but we think that using external
+            library can actually save you a lot of time.
+        </li>
+        <li>
+            When using 3rd party library the tricky part is that we should start HTTP server from our app using its API.
+            This is unsual approach and not all HTTP servers can be used like that so choose wisely. Google something
+            like "embedded http server" for the language of your choice.
+        </li>
+        <li>
+            Next we need to make our app accept some configuration at startup - what port to bind to, for example. Config
+            is provided via text file. Path to it is passed as an argument to your application during startup: "./myapp /etc/myapp/config.txt".
+            Config consists of simple "property=value" lines. Each task provides different set of properties so please
+            refer to <a onclick="$('#environment-content').showAndScrollTo();" href="#">environment</a> section for details.
+        </li>
+        <li>
+            Once you've managed to accept some http requests and provide more or less correct responses it is time to
+            build everything into single file and submit it for evaluation. In most languages initially libraries come
+            as a separate files that are added to project, often after app is built libraries still reside in separate
+            files, but we need to build whole app into single file, packing all libraries inside it. For C-like languages
+            this is called "static linking", for java "jar with dependencies" or "uber jar" and such packaging is used
+            more often than one might think.
+        </li>
+        <li>
+            Once your app is built - submit it and wait for results. Evaluation process is simple - we start your app
+            providing config, run some tests against it and show you the results. Tests invoke API and check results.
+            Tests stop after first error. Each test has some configured timeout, for simple tests which perform single
+            API call this is usually about 3 seconds, for load tests that make thousands of calls this is something like
+            30-60 seconds so be patient.
+        </li>
+        <li>
+            Once tests have finished - check if they all passed. You are likely to encounter errors during at first, so
+            let's get to debugging. Not much of a help here - you are given logs of test process and your process. "Logs"
+            are simply all stdout output dumped to file so if you are using some logging framework in your app then
+            configure it to output all messages to stdout.
+        </li>
+        <li>
+            If nothing helps - post a comment with your problem. Frocate is currently in alpha version, so there must be
+            tons of errors both in tests and infrastructure, but with your help we will fix them :)
+        </li>
+    </ul>
+</div>
+
+<h3
+        class="heading-h3-blue"
+        id="environment"
+        onclick="$('#environment-content').toggle(200)">
+    Environment <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 20px" aria-hidden="true"></span>
+</h3>
+
+<div id="environment-content" style="display: none">
+    <p>
+        Your app will be started as a separate process. To view exact command used to launch executable of your
+        type check <a href="/supported-exec-types.jsp">supported executable file types</a>. A single argument will be
+        passed to your app - path to config file with properties describing the environment.
+    </p>
+
+    <b>Config file format:</b>
+    <div class="well">
+        property1=value1<br>
+        property2=value2<br>
+    </div>
+
+    <b>Properties:</b>
+    <ul>
+        <li><b>host</b> - host to listen for incoming requests on
+        <li><b>port</b> - port to listen for incoming requests on
+    </ul>
+</div>

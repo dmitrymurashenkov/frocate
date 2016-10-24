@@ -1,0 +1,424 @@
+html {
+    /* always show scrollbar to the right to prevent "jumping" */
+    overflow-y: scroll;
+}
+
+.jumbotron {
+    background: #00c0ff;
+    color: white;
+    margin-bottom: 1px;
+    margin-top: 0;
+}
+
+.navbar {
+    margin-bottom: 0;
+    margin-top: 0;
+    border-radius: 0;
+}
+
+.navbar-brand {
+    height: auto;
+    padding: 10px 0 0 15px;
+    font-size: 22px;
+    margin-bottom: -3px;
+}
+
+.navbar-header {
+    margin-right: 10px !important;
+}
+
+#navbar-alpha {
+    font-size: 10px;
+    text-align: right;
+    padding-top: 1px;
+    padding-bottom: 2px;
+}
+
+#navbar-alpha-wrapper {
+    text-align: right;
+}
+
+#jumbotron-logo {
+    max-width: 214px;
+    margin-bottom: 10px;
+}
+
+#jumbotron-alpha {
+    text-align: right;
+    padding-right: 4px;
+}
+
+#jumbotron-title {
+    margin-bottom: -5px;
+}
+
+#faq-toc {
+    line-height: 5px;
+}
+
+.btn-primary {
+    background-color: #f8f8f8;
+    color: #00aced;
+    border: 2px solid;
+}
+
+.task-description-full {
+    max-width: 1000px;
+}
+
+.heading-h3-blue {
+    cursor: pointer;
+    font-weight: bold;
+    color: #00aced;
+}
+
+.task-card {
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: #ccc;
+    width: 75%;
+    max-width: 800px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.task-card__top-left-cell {
+    width: 640px;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.task-card__top-right-cell {
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.task-card__bottom_left-cell {
+    padding-left: 15px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.task-card__bottom-right-cell {
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.task-card__title {
+    color: #00aced;
+    font-size: 150%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.task-card__title > a,
+.task-card__title > a:hover,
+.task-card__title > a:active,
+.task-card__title > a:focus {
+    color: #00aced;
+    text-decoration: none;
+}
+
+.card-button {
+    float: right;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.submit-button {
+    padding-top: 5px;
+}
+
+.task-types {
+    padding-left: 50px;
+    color: #777;
+}
+
+.column-heading {
+    color: #777;
+    padding-left: 18px;
+}
+
+.task-type {
+    margin-left: 10px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: left;
+    color: #777;
+}
+
+.left-column__title {
+    color: #777;
+}
+
+.content-area-centered {
+    max-width: 1250px;
+    margin: auto;
+}
+
+.left-column {
+    width: 250px;
+    position: fixed;
+    float: left;
+    padding-right: 10px;
+    padding-top: 30px;
+}
+
+.right-column {
+    max-width: 1000px;
+    margin-left: 250px;
+    padding-top: 30px;
+}
+
+.single-column {
+    max-width: 1250px;
+    padding-top: 30px;
+}
+
+.navbar-content-centered {
+    max-width: 1250px;
+    margin: auto
+}
+
+.nav-stacked > li {
+    border-left: 3px solid transparent;
+    border-radius: 0;
+}
+
+.nav-stacked > li:hover,
+.nav-stacked > li:active,
+.nav-stacked > li:focus {
+    border-left: 3px solid #00aced !important;
+    border-radius: 0;
+}
+
+.nav-pills > li > a {
+    border-radius: 0;
+}
+
+.activeNav {
+    border-left: 3px solid #00aced !important;
+    border-radius: 0 !important;
+    background: #eee;
+}
+
+.submit-solution {
+    margin-left: 40%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.custom-file-input {
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    cursor: pointer;
+    float: left;
+}
+
+.label {
+    border-radius: 5px;
+    font-size: 80%;
+    background-color: #00aced;
+}
+
+.col-sm-3 {
+    max-width: 300px;
+}
+
+.dropdown-toggle {
+    border-radius: 0;
+    margin-left: 10px;
+    margin-right: 5px;
+    width: 20ch;
+    text-align: left;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+}
+
+.dropdown-menu {
+    border-radius: 0;
+    margin-left: 10px;
+    margin-right: 3px;
+    min-width: 156px;
+    margin-top: 15px;
+}
+
+.doc-toggle {
+    width: 40ch;
+}
+
+.doc-dropdown{
+    min-width: 312px;
+}
+
+.caret {
+    left: 85%;
+    top: 45%;
+    position: absolute;
+}
+
+.upload-controls {
+    display: inline-block;
+}
+
+.warn {
+    background-color: #ffb3b3;
+}
+
+.warn-text {
+    color: red;
+}
+
+#disq {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.resultTable > tbody > tr > td {
+    border-top: 0;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.faq-side-section {
+    padding-bottom: 15px;
+    color: #00aced;
+}
+
+.faq-title {
+    font-weight: bold;
+    padding-bottom: 5px;
+    font-size: 110%;
+}
+
+.faq-side-title {
+    font-size: 110%;
+    color: #00aced;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    line-height: 40px;
+}
+
+#faq-left-column {
+    position: fixed;
+}
+
+.faq-toc-title {
+    font-size: 110%;
+    color: #00aced;
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.execTypeTitle {
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.resultTitle{
+    font-size: 110%;
+    color: #00aced;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+.sectionItem{
+    list-style: none;
+    padding-bottom: 0px;
+    padding-top: 15px;
+    color: #00aced;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.resultPassed{
+    font-size: 120%;
+    list-style: none;
+    padding-bottom: 3px;
+    padding-top: 20px;
+    color: #00aced;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/*todo merge with resultValue? */
+.test-result-cell {
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.label-error {
+    font-size: 14px;
+    background-color: #cc0000;
+}
+
+.label-bad {
+    font-size: 14px;
+    background-color: #f75d00;
+}
+
+.label-good {
+    font-size: 14px;
+    background-color: #69cc00;
+}
+
+.label-excellent {
+    font-size: 14px;
+    background-color: #00aced;
+}
+
+#pass{
+    font-weight: bold;
+}
+
+.result-cell-general {
+    color: #333;
+    padding-left: 30px;
+}
+
+.metric-result-cell {
+    white-space: nowrap;
+}
+
+.metric-desc-cell {
+    padding-left: 50px;
+}
+
+.metric-range-cell {
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 50px;
+}
+
+.metric-table-row {
+    border-top: 1px solid rgb(221,221,221);
+}
+
+.passed-test-count {
+    color: #000;
+}
+
+.passed-failed-label {
+    margin-left: 10px;
+}
+
+.news-block {
+    text-align: left;
+    max-width: 1250px;
+    margin: auto
+}
