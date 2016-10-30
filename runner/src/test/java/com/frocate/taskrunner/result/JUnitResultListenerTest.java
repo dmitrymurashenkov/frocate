@@ -74,6 +74,23 @@ public class JUnitResultListenerTest
         appender.assertContainsMessage(Level.ERROR, "Test failed with internal error: Exception in tearDown method");
     }
 
+    /**
+     * If we declare expected exception in test and it is not thrown we can't provide user detailed error message
+     * so such tests should be rewritten.
+     */
+    @Test
+    public void getErrorLogs_shouldTreatAbsenceOfExpectedExceptionAsInternalError() throws Exception
+    {
+        JUnitResultListener listener = runTest(MockTestNoExpectedException.class);
+        assertEquals(Arrays.asList(
+                new TestResult("MockTestNoExpectedException.failingTest", false, "Internal error in frocate framework " +
+                        "(wow! seems our tests themselves are not that bug-free, but don't worry - this incident is " +
+                        "reported and we will fix it right away!), message: Expected exception: java.lang.RuntimeException")
+                ),
+                listener.getResults());
+        appender.assertContainsMessage(Level.ERROR, "Test failed with internal error: Expected exception: java.lang.RuntimeException");
+    }
+
     public static class MockTest
     {
         @Test
@@ -136,6 +153,14 @@ public class JUnitResultListenerTest
         public void failingTest()
         {
             throw new RuntimeException("Test exception");
+        }
+    }
+
+    public static class MockTestNoExpectedException
+    {
+        @Test(expected = RuntimeException.class)
+        public void failingTest()
+        {
         }
     }
 
