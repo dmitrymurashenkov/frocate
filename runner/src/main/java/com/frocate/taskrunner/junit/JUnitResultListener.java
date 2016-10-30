@@ -44,12 +44,12 @@ public class JUnitResultListener extends RunListener
     {
         if (Description.TEST_MECHANISM.equals(failure.getDescription()))
         {
-            log.error("Test failed with internal error", failure.getException());
+            log.error("Test failed with internal error: " + failure.getMessage(), failure.getException());
         }
         Description description = failure.getDescription();
         if (isInternalFailure(failure))
         {
-            log.error("Test failed with internal error", failure.getException());
+            log.error("Test failed with internal error: " + failure.getMessage(), failure.getException());
             //if error occured in @After then frocate have passed so no need to overwrite it's result
             onTestFinished(failure.getDescription(), new TestResult(getTestName(description), false,
                     "Internal error in frocate framework (wow! seems our tests themselves are not that bug-free, " +

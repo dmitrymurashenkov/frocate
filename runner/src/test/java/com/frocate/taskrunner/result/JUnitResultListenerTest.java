@@ -60,7 +60,7 @@ public class JUnitResultListenerTest
                         "reported and we will fix it right away!), message: Exception in setUp method")
                 ),
                 listener.getResults());
-        appender.assertContainsMessage(Level.ERROR, "Test failed with internal error");
+        appender.assertContainsMessage(Level.ERROR, "Test failed with internal error: Exception in setUp method");
     }
 
     @Test
@@ -71,7 +71,7 @@ public class JUnitResultListenerTest
                 new TestResult("MockTestWithFailingAfter.failingTest", false, "Test exception")
                 ),
                 listener.getResults());
-        appender.assertContainsMessage(Level.ERROR, "Test failed with internal error");
+        appender.assertContainsMessage(Level.ERROR, "Test failed with internal error: Exception in tearDown method");
     }
 
     public static class MockTest
