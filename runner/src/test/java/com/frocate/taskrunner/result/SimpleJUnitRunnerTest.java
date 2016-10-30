@@ -1,6 +1,7 @@
 package com.frocate.taskrunner.result;
 
 import com.frocate.taskrunner.FileUtils;
+import com.frocate.taskrunner.IncorrectTestException;
 import com.frocate.taskrunner.junit.SimpleJUnitRunner;
 import com.frocate.taskrunner.junit.TaskProgress;
 import org.junit.FixMethodOrder;
@@ -75,20 +76,35 @@ public class SimpleJUnitRunnerTest
         Test3.latch2.countDown();
     }
 
+    @Test(expected = IncorrectTestException.class)
+    public void runTests_shouldThrowException_ifSomeTestsHaveNoTimeoutSet()
+    {
+        new SimpleJUnitRunner().runTests(progressFile, metrics, TestNoTimeout.class);
+    }
+
+    @Test(expected = IncorrectTestException.class)
+    public void runTests_shouldThrowException_ifTestExpectsException()
+    {
+        new SimpleJUnitRunner().runTests(progressFile, metrics, TestExceptException.class);
+    }
+
     public static class Test1
     {
-        @Test
+        @Test(timeout = 1000)
         public void test1() {}
     }
 
     @FixMethodOrder(MethodSorters.NAME_ASCENDING)
     public static class Test2
     {
-        @Test public void test1() {}
+        @Test(timeout = 1000)
+        public void test1() {}
 
-        @Test public void test2() { fail("Error"); }
+        @Test(timeout = 1000)
+        public void test2() { fail("Error"); }
 
-        @Test public void test3() { }
+        @Test(timeout = 1000)
+        public void test3() { }
     }
 
     @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -97,12 +113,26 @@ public class SimpleJUnitRunnerTest
         private static final CountDownLatch latch1 = new CountDownLatch(1);
         private static final CountDownLatch latch2 = new CountDownLatch(1);
 
-        @Test public void test1() {}
+        @Test(timeout = 1000)
+        public void test1() {}
 
-        @Test public void test2() throws InterruptedException
+        @Test(timeout = 1000)
+        public void test2() throws InterruptedException
         {
             latch1.countDown();
             latch2.await(3, TimeUnit.SECONDS);
         }
+    }
+
+    public static class TestNoTimeout
+    {
+        @Test
+        public void test() {}
+    }
+
+    public static class TestExceptException
+    {
+        @Test(timeout = 1000, expected = RuntimeException.class)
+        public void test() {}
     }
 }

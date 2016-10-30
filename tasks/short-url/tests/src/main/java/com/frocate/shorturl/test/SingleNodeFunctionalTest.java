@@ -13,6 +13,7 @@ import java.util.List;
 import static com.frocate.shorturl.test.ShortUrlTask.clusterControl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class SingleNodeFunctionalTest
 {
@@ -89,16 +90,32 @@ public class SingleNodeFunctionalTest
         }
     }
 
-    @Test(expected = RuntimeException.class, timeout = 3000)
+    @Test(timeout = 3000)
     public void expand_shouldThrowException_ifURLNotFound1()
     {
-        service.expand("01234unknownUrl");
+        try
+        {
+            service.expand("01234unknownUrl");
+            fail("Expected to received code 500 for url that was not previously shortened: 01234unknownUrl");
+        }
+        catch (RuntimeException e)
+        {
+            //ok
+        }
     }
 
-    @Test(expected = RuntimeException.class, timeout = 3000)
+    @Test(timeout = 3000)
     public void expand_shouldThrowException_ifURLNotFound2()
     {
-        service.expand("unknownUrl01234");
+        try
+        {
+            service.expand("unknownUrl01234");
+            fail("Expected to received code 500 for url that was not previously shortened: unknownUrl01234");
+        }
+        catch (RuntimeException e)
+        {
+            //ok
+        }
     }
 
     private List<String> getSampleURLs()
